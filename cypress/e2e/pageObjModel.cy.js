@@ -1,10 +1,11 @@
+import { LoginPage } from './pages/login_page'
+
 it('Page Object Demo', () => {
-  cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
-  cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type('Admin');
-  cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type('admin123');
-  cy.get('.oxd-button').click();
+  const url = 'https://opensource-demo.orangehrmlive.com/web/index.php/auth/login'
+  const usernameId = ':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input';
+  const passwordId = ':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input';
+  const loginPage = new LoginPage('Admin', 'admin123', usernameId, passwordId, '.oxd-button')
 
-  cy.get('.oxd-main-menu-search > .oxd-icon-button > .oxd-icon').click();
-
-  cy.location('pathname').should('include', 'dashboard');
+  loginPage.visit(url)
+  loginPage.login('Admin', 'admin123')
 })  
