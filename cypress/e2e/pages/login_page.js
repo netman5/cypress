@@ -1,33 +1,30 @@
 export class LoginPage {
 
-  constructor(username, password, usernameId, passwordId, submitId, url) {
-    this.username = username;
-    this.password = password;
-    this.usernameId = usernameId;
-    this.passwordId = passwordId;
+  constructor(usernameInputBoxId, passwordInputBoxId, submitId) {
+    this.usernameInputBoxId = usernameInputBoxId;
+    this.passwordInputBoxId = passwordInputBoxId;
     this.submitId = submitId;
-    this.url = url;
   }
 
-  visit() {
-    cy.visit(this.url)
+  visit(url) {
+    cy.visit(url)
   }
 
-  fillUsername() {
-    cy.get(this.usernameId).type(this.username)
+  fillUsername(username) {
+    cy.get(this.usernameInputBoxId).type(username)
   }
 
-  fillPassword() {
-    cy.get(this.passwordId).type(this.password)
+  fillPassword(password) {
+    cy.get(this.passwordInputBoxId).type(password)
   }
 
   submit() {
     cy.get(this.submitId).click()
   }
 
-  login() {
-    this.fillUsername()
-    this.fillPassword()
+  login(username, password) {
+    this.fillUsername(username)
+    this.fillPassword(password)
     this.submit()
   }
 }
