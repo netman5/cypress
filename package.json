@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "echo I am the pretest script",
+    "posttest": "echo I am the posttest script",
+    "test": "echo I am the test",
+    "cy": "cypress run"
   },
   "repository": {
     "type": "git",
